@@ -1,0 +1,297 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  background: #f4f6f8;
+  color: #333;
+  padding: 30px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 6px;
+  color: #1a1a2e;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* Upload card */
+.card {
+  background: #fff;
+  border: 1px solid #dde1e7;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card label {
+  display: block;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+input[type="file"] {
+  font-size: 13px;
+  color: #333;
+}
+
+button {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button:hover { background: #1558c0; }
+button:disabled { background: #aaa; cursor: not-allowed; }
+
+.error {
+  margin-top: 12px;
+  color: #c0392b;
+  font-size: 12px;
+  padding: 8px 12px;
+  background: #fdecea;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+}
+
+/* Summary bar */
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: #fff;
+  border: 1px solid #dde1e7;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat .val {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.stat .lbl {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.green  { color: #27ae60 !important; }
+.red    { color: #c0392b !important; }
+.yellow { color: #d68910 !important; }
+.blue   { color: #1a73e8 !important; }
+.muted  { color: #888    !important; }
+
+/* Table */
+.table-wrap {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #dde1e7;
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead th {
+  background: #f8f9fa;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #dde1e7;
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid #eef0f3;
+}
+
+tbody tr:hover { background: #f8f9fa; }
+
+tbody td {
+  padding: 9px 14px;
+  vertical-align: middle;
+}
+
+.thread-name {
+  font-weight: 600;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #1a1a2e;
+}
+
+/* State badges */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-RUNNABLE      { background: #d4edda; color: #155724; }
+.badge-BLOCKED       { background: #f8d7da; color: #721c24; }
+.badge-WAITING       { background: #fff3cd; color: #856404; }
+.badge-TIMED_WAITING { background: #cce5ff; color: #004085; }
+.badge-UNKNOWN       { background: #e2e3e5; color: #383d41; }
+
+/* Health tags */
+.health {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.health-HOT     { background: #f8d7da; color: #721c24; }
+.health-ACTIVE  { background: #d4edda; color: #155724; }
+.health-BLOCKED { background: #fff3cd; color: #856404; }
+.health-IDLE    { background: #e2e3e5; color: #555; }
+
+/* Expand button */
+.expand-btn {
+  background: none;
+  border: 1px solid #ccc;
+  color: #555;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.expand-btn:hover {
+  border-color: #1a73e8;
+  color: #1a73e8;
+}
+
+/* Stack trace row */
+.stack-row { display: none; }
+.stack-row.open { display: table-row; }
+
+.stack-cell {
+  padding: 0 14px 14px 30px !important;
+  background: #fafbfc;
+}
+
+.stack-pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  color: #555;
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 1.6;
+  max-height: 200px;
+  overflow-y: auto;
+  border-left: 3px solid #dde1e7;
+  padding-left: 12px;
+  margin-top: 6px;
+}
+
+.no-stack {
+  color: #999;
+  font-size: 12px;
+}
+
+/* ── Additions for new fields ────────────────────────────────────────── */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.controls input[type="text"] {
+  font-size: 13px;
+  color: #333;
+  background: #fff;
+  border: 1px solid #dde1e7;
+  border-radius: 4px;
+  padding: 6px 10px;
+  width: 240px;
+  outline: none;
+}
+
+.controls input[type="text"]:focus { border-color: #1a73e8; }
+
+.controls select {
+  font-size: 13px;
+  color: #333;
+  background: #fff;
+  border: 1px solid #dde1e7;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Small monospace for tid / nid cells */
+.mono-sm {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  color: #555;
+}
+
+/* Smaller text for state detail and lock info */
+.small {
+  font-size: 11px;
+  color: #888;
+}
+
+.lock-info {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.empty-msg {
+  text-align: center;
+  padding: 24px;
+  color: #999;
+  font-size: 13px;
+}

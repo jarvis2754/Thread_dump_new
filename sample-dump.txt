@@ -1,0 +1,35 @@
+2024-01-15 10:23:45
+Full thread dump OpenJDK 64-Bit Server VM (21.0.1+12-29 mixed mode):
+
+"ZLogsAgent-3" #45 daemon prio=5 os_prio=0 cpu=55553.41ms elapsed=123456.78ms tid=0x00007f1234 nid=0x1a2b waiting on condition
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+        at java.lang.Thread.sleep(Native Method)
+        at com.app.agent.ZLogsAgent.run(ZLogsAgent.java:142)
+        at java.lang.Thread.run(Thread.java:1623)
+
+"Worker-Thread-42" #67 prio=5 os_prio=0 cpu=44321.10ms elapsed=120000.00ms tid=0x00007f5678 nid=0x1b3c runnable
+   java.lang.Thread.State: RUNNABLE
+        at sun.nio.ch.EPoll.wait(Native Method)
+        at com.app.worker.WorkerThread.processQueue(WorkerThread.java:89)
+        at java.lang.Thread.run(Thread.java:1623)
+
+"RequestProcessor-7" #12 prio=10 os_prio=0 cpu=38901.22ms elapsed=115000.00ms tid=0x00007faaaa nid=0x2c4d waiting
+   java.lang.Thread.State: BLOCKED (on object monitor)
+        - waiting to lock <0x000000076b3e2de8> (a java.util.concurrent.locks.ReentrantLock)
+        at com.app.RequestProcessor.processRequest(RequestProcessor.java:55)
+        at java.lang.Thread.run(Thread.java:1623)
+
+"main" #1 prio=5 os_prio=0 cpu=345.12ms elapsed=131000.00ms tid=0x00007fcccc nid=0x0001 waiting on condition
+   java.lang.Thread.State: WAITING (on object monitor)
+        at java.lang.Object.wait(Native Method)
+        at com.app.Main.main(Main.java:78)
+
+"DatabaseConnectionPool-1" #23 daemon prio=5 os_prio=0 cpu=8765.43ms elapsed=128000.00ms tid=0x00007fdddd nid=0x3e5f
+   java.lang.Thread.State: TIMED_WAITING (parking)
+        at jdk.internal.misc.Unsafe.park(Native Method)
+        at com.app.db.ConnectionPool.borrowConnection(ConnectionPool.java:201)
+
+"Finalizer" #3 daemon prio=8 os_prio=0 cpu=23.45ms elapsed=131000.00ms tid=0x00007fffff nid=0x0003
+   java.lang.Thread.State: WAITING (on object monitor)
+        at java.lang.Object.wait(Native Method)
+        at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:228)

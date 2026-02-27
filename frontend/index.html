@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thread Dump Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Thread Dump Analyzer</h1>
+    <p class="subtitle">Upload a Java thread dump to analyze thread states, CPU usage, OS thread IDs and stack traces.</p>
+
+    <!-- Upload Form -->
+    <div class="card" id="uploadSection">
+      <label for="fileInput">Select thread dump file (.txt / .log)</label>
+      <div class="row">
+        <input type="file" id="fileInput" accept=".txt,.log,.tdump">
+        <button id="analyzeBtn" onclick="analyze()">Analyze</button>
+      </div>
+      <div id="errorMsg" class="error" style="display:none;"></div>
+    </div>
+
+    <!-- Summary Bar -->
+    <div id="summarySection" style="display:none;">
+      <div class="summary">
+        <div class="stat"><span id="sTotal"  class="val">0</span><span class="lbl">Total</span></div>
+        <div class="stat"><span id="sRun"    class="val green">0</span><span class="lbl">Runnable</span></div>
+        <div class="stat"><span id="sBlock"  class="val red">0</span><span class="lbl">Blocked</span></div>
+        <div class="stat"><span id="sWait"   class="val yellow">0</span><span class="lbl">Waiting</span></div>
+        <div class="stat"><span id="sTimed"  class="val blue">0</span><span class="lbl">Timed Wait</span></div>
+        <div class="stat"><span id="sHot"    class="val red">0</span><span class="lbl">Hot CPU</span></div>
+        <div class="stat"><span id="sDaemon" class="val muted">0</span><span class="lbl">Daemon</span></div>
+      </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div id="controlsSection" class="controls" style="display:none;">
+      <input type="text" id="searchInput" placeholder="Filter by thread name..." oninput="applyFilters()">
+      <select id="stateFilter" onchange="applyFilters()">
+        <option value="">All States</option>
+        <option value="RUNNABLE">RUNNABLE</option>
+        <option value="BLOCKED">BLOCKED</option>
+        <option value="WAITING">WAITING</option>
+        <option value="TIMED_WAITING">TIMED_WAITING</option>
+      </select>
+      <select id="healthFilter" onchange="applyFilters()">
+        <option value="">All Health</option>
+        <option value="HOT">HOT</option>
+        <option value="ACTIVE">ACTIVE</option>
+        <option value="BLOCKED">BLOCKED</option>
+        <option value="IDLE">IDLE</option>
+      </select>
+    </div>
+
+    <!-- Results Table -->
+    <div id="tableSection" style="display:none;">
+      <div class="table-wrap">
+        <table id="mainTable">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Thread Name</th>
+              <th>Thread #</th>
+              <th>State</th>
+              <th>State Detail</th>
+              <th>Health</th>
+              <th>Daemon</th>
+              <th>JVM Prio</th>
+              <th>OS Prio</th>
+              <th>tid (JVM)</th>
+              <th>nid (OS hex)</th>
+              <th>nid (OS dec)</th>
+              <th>CPU (ms)</th>
+              <th>Elapsed (ms)</th>
+              <th>CPU %</th>
+              <th>Lock Info</th>
+              <th>Stack Trace</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+        <div id="emptyMsg" class="empty-msg" style="display:none;">No threads match the filters.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
